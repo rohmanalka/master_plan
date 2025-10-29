@@ -22,17 +22,23 @@ class _PlanScreenState extends State<PlanScreen> {
   }
 
   Widget _buildAddTaskButton() {
-  return FloatingActionButton(
-   child: const Icon(Icons.add),
-   onPressed: () {
-     setState(() {
-      plan = Plan(
-       name: plan.name,
-       tasks: List<Task>.from(plan.tasks)
-       ..add(const Task()),
-     );
-    });
-   },
-  );
-}
+    return FloatingActionButton(
+      child: const Icon(Icons.add),
+      onPressed: () {
+        setState(() {
+          plan = Plan(
+            name: plan.name,
+            tasks: List<Task>.from(plan.tasks)..add(const Task()),
+          );
+        });
+      },
+    );
+  }
+
+  Widget _buildList() {
+    return ListView.builder(
+      itemCount: plan.tasks.length,
+      itemBuilder: (context, index) => _buildTaskTile(plan.tasks[index], index),
+    );
+  }
 }
