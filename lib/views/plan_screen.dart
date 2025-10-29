@@ -41,4 +41,36 @@ class _PlanScreenState extends State<PlanScreen> {
       itemBuilder: (context, index) => _buildTaskTile(plan.tasks[index], index),
     );
   }
+
+  Widget _buildTaskTile(Task task, int index) {
+    return ListTile(
+      leading: Checkbox(
+        value: task.complete,
+        onChanged: (selected) {
+          setState(() {
+            plan = Plan(
+              name: plan.name,
+              tasks: List<Task>.from(plan.tasks)
+                ..[index] = Task(
+                  description: task.description,
+                  complete: selected ?? false,
+                ),
+            );
+          });
+        },
+      ),
+      title: TextFormField(
+        initialValue: task.description,
+        onChanged: (text) {
+          setState(() {
+            plan = Plan(
+              name: plan.name,
+              tasks: List<Task>.from(plan.tasks)
+                ..[index] = Task(description: text, complete: task.complete),
+            );
+          });
+        },
+      ),
+    );
+  }
 }
