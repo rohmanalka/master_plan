@@ -10,12 +10,13 @@ class PlanScreen extends StatefulWidget {
 
 class _PlanScreenState extends State<PlanScreen> {
   Plan plan = const Plan();
+  late ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // ganti ‘Namaku' dengan Nama panggilan Anda
-      appBar: AppBar(title: const Text('Master Plan Namaku')),
+      appBar: AppBar(title: const Text('Master Plan Alka')),
       body: _buildList(),
       floatingActionButton: _buildAddTaskButton(),
     );
