@@ -22,6 +22,12 @@ class _PlanScreenState extends State<PlanScreen> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       // ganti ‘Namaku' dengan Nama panggilan Anda
