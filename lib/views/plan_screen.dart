@@ -47,6 +47,10 @@ class _PlanScreenState extends State<PlanScreen> {
 
   Widget _buildList() {
     return ListView.builder(
+      controller: scrollController,
+      keyboardDismissBehavior: Theme.of(context).platform == TargetPlatform.iOS
+          ? ScrollViewKeyboardDismissBehavior.onDrag
+          : ScrollViewKeyboardDismissBehavior.manual,
       itemCount: plan.tasks.length,
       itemBuilder: (context, index) => _buildTaskTile(plan.tasks[index], index),
     );
